@@ -1,0 +1,58 @@
+<div ng-controller="entryEditCtrl">
+  <div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3" translate="calorysection.NEWENTRY" ng-show="isEdit == false">NEW ENTRY</h1>
+    <h1 class="m-n font-thin h3" translate="calorysection.EDITENTRY" ng-show="isEdit == true">EDIT ENTRY</h1>
+  </div>
+  <div class="wrapper-md">
+    <div class="row">
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <br/>
+            <form class="form-horizontal">
+              <div class="form-group" ng-show="user.role == 1">
+                <label class="col-lg-3 control-label" translate="header.navbar.new.USER">User</label>
+                <div class="col-lg-4">
+                  <select ng-model="editentry.userID" class="form-control m-b" ng-options="usr._id as usr.username for usr in users">
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label" translate="calorysection.DATE">Date</label>
+                <div class="col-lg-4">
+                  <input type="text" class="form-control" placeholder="Date" ng-model="editentry.date">
+                  <span class="help-block m-b-none">Expected Format: YYYY-MM-DD<br/> (Eg. 2015-01-01)</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label" translate="calorysection.TIME">Time</label>
+                <div class="col-lg-4">
+                  <input type="text" class="form-control" placeholder="Time" ng-model="editentry.time">
+                  <span class="help-block m-b-none">Expected Format: hh:mm:ss<br/> (Eg. 15:05:23)</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label" translate="calorysection.DESCRIPTION">Description</label>
+                <div class="col-lg-8">
+                  <input type="text" class="form-control" placeholder="Description" ng-model="editentry.description">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label" translate="calorysection.NUMBEROFCALORIES">Number of calories</label>
+                <div class="col-lg-4">
+                  <input type="text" class="form-control" placeholder="Number of calories" ng-model="editentry.num_of_calories">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-offset-3 col-lg-8" style="text-align: right;">
+                  <button type="button" class="btn btn-sm btn-default" translate="account.CANCEL" ng-click="cancel();">Cancel</button>
+                  <button type="button" class="btn btn-sm btn-info" translate="account.SAVE" ng-click="updateEntry();">Save</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

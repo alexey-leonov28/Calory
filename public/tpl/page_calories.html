@@ -1,0 +1,64 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3" translate="aside.nav.MEALS_CALORIES">Meals and Calories</h1>
+</div>
+<div class="wrapper-md" ng-controller="caloryListCtrl">
+  <div class="panel panel-default">
+    <div class="panel-body b-b b-light">
+      <span translate="calorysection.DATE">Date</span>: <input type="text" class="form-control input-sm w-sm inline" ng-model="date1"/> - <input type="text" class="form-control input-sm w-sm inline m-r" ng-model="date2"/> <span translate="calorysection.TIME">Time</span>: <input type="text" class="form-control input-sm w-sm inline" ng-model="time1"/> - <input type="text" class="form-control input-sm w-sm inline m-r" ng-model="time2"/>
+      <button class="btn m-b-xs btn-sm btn-primary btn-addon" ng-click="filter()">FILTER</button>
+      <button class="btn m-b-xs btn-sm btn-warning btn-addon" ng-click="clearfilter()">CLEAR</button>
+
+      <span style="float:right;">
+          <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="editEntry()"><i class="fa fa-plus"></i>NEW</button>
+      </span>
+    </div>
+
+    <div style="padding-bottom: 10px;">
+      <table class="table m-b-none" ui-jq="footable" data-page-size="10">
+        <thead>
+          <tr>
+              <th width="10%" ng-show="user.role == 1">
+                  <span translate="header.navbar.new.USER">User</span>
+              </th>
+              <th data-hide="phone, tablet" width="10%">
+                  <span translate="calorysection.DATE">Date</span>
+              </th>
+              <th data-hide="phone, tablet" width="10%">
+                  <span translate="calorysection.TIME">Time</span>
+              </th>
+              <th data-hide="phone, tablet" width="20%">
+                  <span translate="calorysection.DESCRIPTION">Description</span>
+              </th>
+              <th width="10%">
+                  <span translate="calorysection.NUMBEROFCALORIES">Number of Calories</span>
+              </th>
+              <th data-hide="phone, tablet" width="10%">
+                  <span translate="usersection.STATUS">Status</span>
+              </th>
+              <th width="10%">
+                  <span translate="usersection.ACTION">Action</span>
+              </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="cal in calories">
+              <td ng-show="user.role == 1">{{cal.user}}</td>
+              <td>{{cal.date}}</td>
+              <td>{{cal.time}}</td>
+              <td>{{cal.description}}</td>
+              <td>{{cal.num_of_calories}}</td>
+              <td data-value="1"><span class="label bg-success" ng-show="cal.status == true" translate="calorysection.AVAIL">Avail</span><span class="label bg-danger" ng-show="cal.status == false" translate="calorysection.OVER">OVER</span></td>
+              <td><div class="list-icon action-icon"><div><a href="" ng-click="editEntry(cal._id);"><i class="fa fa-pencil"></i></a></div><div><a href="" ng-click="removeEntry('{{cal._id}}');"><i class="glyphicon glyphicon-remove"></i></a></div></td>
+          </tr>
+        </tbody>
+        <tfoot class="hide-if-no-paging">
+          <tr>
+              <td colspan="5" class="text-center">
+                  <ul class="pagination"></ul>
+              </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>

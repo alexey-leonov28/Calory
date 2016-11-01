@@ -1,0 +1,70 @@
+<div ng-controller="userEditCtrl">
+  <div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3" translate="usersection.NEWUSER" ng-show="isEdit == false">NEW USER</h1>
+    <h1 class="m-n font-thin h3" translate="usersection.EDITUSER" ng-show="isEdit == true">EDIT USER</h1>
+  </div>
+  <div class="wrapper-md">
+    <div class="row">
+      <div class="col-sm-7">
+        <div class="panel panel-info">
+          <div class="panel-body">
+            <br/>
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label class="col-lg-3 control-label" translate="account.MYROLE">My Role</label>
+                <div class="col-lg-4">
+                  <input type="text" class="form-control" placeholder="Role" ng-model="roleString[edituser.role]" disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label" translate="aside.nav.EMAIL">Email</label>
+                <div class="col-lg-8">
+                  <input type="email" class="form-control" placeholder="Email" ng-model="edituser.email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label" translate="account.USERNAME">Username</label>
+                <div class="col-lg-8">
+                  <input type="text" class="form-control" placeholder="Username" ng-model="edituser.username">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label" translate="account.FULLNAME">Full Name</label>
+                <div class="col-lg-4">
+                  <input type="text" class="form-control" placeholder="First Name" ng-model="edituser.firstname">
+                </div>
+                <div class="col-lg-4">
+                  <input type="text" class="form-control" placeholder="Last Name" ng-model="edituser.lastname">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label" translate="account.EXPECTEDCALORIESPERDAY">Expected number of calories per day</label>
+                <div class="col-lg-4">
+                  <input type="text" class="form-control" placeholder="0" ng-model="edituser.expected_calories_day">
+                </div>
+              </div>
+              <div class="form-group" ng-show="!isEdit">
+                <label class="col-lg-3 control-label" translate="account.PASSWORD">Password</label>
+                <div class="col-lg-4">
+                  <input type="password" class="form-control" placeholder="Password" ng-model="password1">
+                </div>
+              </div>
+              <div class="form-group" ng-show="!isEdit">
+                <label class="col-lg-3 control-label" translate="account.CONFIRMPASSWORD">Confirm Password</label>
+                <div class="col-lg-4">
+                  <input type="password" class="form-control" placeholder="Confirm Password" ng-model="password2">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-offset-3 col-lg-8" style="text-align: right;">
+                  <button type="button" class="btn btn-sm btn-default" translate="account.CANCEL" ng-click="cancel();">Cancel</button>
+                  <button type="button" class="btn btn-sm btn-info" translate="account.SAVE" ng-click="updateUser();">Save</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

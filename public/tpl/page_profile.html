@@ -1,0 +1,86 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3" translate="account.MYACCOUNT">My Account</h1>
+</div>
+<div class="wrapper-md" ng-controller="ProfileCtrl">
+  <div class="row">
+    <div class="col-sm-7">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label class="col-lg-3 control-label" translate="account.MYROLE">My Role</label>
+              <div class="col-lg-4">
+                <input type="text" class="form-control" placeholder="Role" ng-model="roleString[edituser.role]" disabled>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-3 control-label" translate="aside.nav.EMAIL">Email</label>
+              <div class="col-lg-8">
+                <input type="email" class="form-control" placeholder="Email" ng-model="edituser.email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-3 control-label" translate="account.USERNAME">Username</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control" placeholder="Username" ng-model="edituser.username">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-3 control-label" translate="account.FULLNAME">Full Name</label>
+              <div class="col-lg-4">
+                <input type="text" class="form-control" placeholder="First Name" ng-model="edituser.firstname">
+              </div>
+              <div class="col-lg-4">
+                <input type="text" class="form-control" placeholder="Last Name" ng-model="edituser.lastname">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-3 control-label" translate="account.EXPECTEDCALORIESPERDAY">Expected number of calories per day</label>
+              <div class="col-lg-4">
+                <input type="text" class="form-control" placeholder="0" ng-model="edituser.expected_calories_day">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <div class="col-lg-offset-3 col-lg-4">
+                <div class="checkbox">
+                  <label class="i-checks">
+                    <input type="checkbox" ng-model="PasswordForm"><i></i> Change Password?
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-lg-offset-3 col-lg-8" style="text-align: right;">
+                <button type="button" class="btn btn-sm btn-info" translate="account.SAVE" ng-click="updateProfile();">Save</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-5" ng-show="PasswordForm">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form role="form">
+            <div class="form-group">
+              <label translate="account.OLDPASSWORD">Old Password</label>
+              <input type="password" class="form-control" placeholder="Old Password" ng-model="opassword">
+            </div>
+            <div class="form-group">
+              <label translate="account.NEWPASSWORD">New Password</label>
+              <input type="password" class="form-control" placeholder="New Password" ng-model="password1">
+            </div>
+            <div class="form-group">
+              <label translate="account.CONFIRMPASSWORD">Confirm Password</label>
+              <input type="password" class="form-control" placeholder="Confirm Password" ng-model="password2">
+            </div>
+            <button type="button" class="btn btn-sm btn-info" ng-click="updatePassword();" translate="account.SAVE">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3" translate="usersection.USERS">Users</h1>
+</div>
+<div class="wrapper-md" ng-controller="userListCtrl">
+  <div class="panel panel-default">
+    <div class="panel-body b-b b-light">
+      <span translate="aside.nav.components.pages.SEARCH">Search</span>: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>
+      <span style="float:right;">
+          <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="editUser()"><i class="fa fa-plus"></i>NEW</button>
+      </span>
+    </div>
+
+    <div style="padding-bottom: 10px;">
+      <table class="table m-b-none" ui-jq="footable" data-filter="#filter" data-page-size="10">
+        <thead>
+          <tr>
+              <th width="10%">
+                  <span translate="header.navbar.new.EMAIL">Email</span>
+              </th>
+              <th width="10%">
+                  <span translate="account.USERNAME">Username</span>
+              </th>
+              <th data-hide="phone, tablet" width="10%">
+                  <span translate="usersection.FIRSTNAME">Firstname</span>
+              </th>
+              <th data-hide="phone, tablet" width="10%">
+                  <span translate="usersection.LASTNAME">Lastname</span>
+              </th>
+              <th width="10%">
+                  <span translate="account.EXPECTEDCALORIESPERDAY">Calories per day</span>
+              </th>
+              <th width="10%">
+                  <span translate="usersection.ROLE">Role</span>
+              </th>
+              <th data-hide="phone, tablet" width="10%">
+                  <span translate="usersection.STATUS">Status</span>
+              </th>
+              <th width="10%">
+                  <span translate="usersection.ACTION">Action</span>
+              </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="usr in users">
+              <td>{{usr.email}}</td>
+              <td>{{usr.username}}</td>
+              <td>{{usr.firstname}}</td>
+              <td>{{usr.lastname}}</td>
+              <td>{{usr.expected_calories_day}}</td>
+              <td>{{roleString[usr.role]}}</td>
+              <td data-value="1"><span class="label bg-success" ng-show="usr.status == true" translate="usersection.ACTIVE">Active</span><span class="label bg-warning" ng-show="usr.status == false" translate="usersection.SUSPENDED">Suspended</span></td>
+              <td><div class="list-icon action-icon" ng-show="editable(usr._id, usr.role)"><div><a href="" ng-click="activateUser(usr._id);"><i class=" icon-check"></i></a></div><div><a href="" ng-click="editUser(usr._id);"><i class="fa fa-pencil"></i></a></div><div><a href="" ng-click="removeUser('{{usr._id}}');"><i class="glyphicon glyphicon-remove"></i></a></div></td>
+          </tr>
+        </tbody>
+        <tfoot class="hide-if-no-paging">
+          <tr>
+              <td colspan="5" class="text-center">
+                  <ul class="pagination"></ul>
+              </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
